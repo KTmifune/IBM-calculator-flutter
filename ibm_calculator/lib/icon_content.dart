@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-
-const textStyle = TextStyle(
-  fontSize: 18.0,
-  color: Colors.white,
-);
+import 'constants.dart';
 
 // 性別のアイコン設定
 class IconContent extends StatelessWidget {

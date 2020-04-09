@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
 import 'reusable_card.dart';
-
-const activeCardColor = Colors.blueGrey;
-const bottomContainerColor = Colors.pink;
-const inactiveColor = Color(0xFF322E80);
+import 'constants.dart';
 
 enum Gender { male, female }
 
@@ -19,6 +16,7 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Gender selectGender;
+  int height = 180;
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +64,45 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
             Expanded(
-              child: ReusableCard(color: activeCardColor),
+              child: ReusableCard(
+                color: activeCardColor,
+                cardChild: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      '身長',
+                      style: textStyle,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      textBaseline: TextBaseline.alphabetic,
+                      children: <Widget>[
+                        Text(
+                          height.toString(),
+                          style: kNumberTextStyle,
+                        ),
+                        Text(
+                          'cm',
+                          style: textStyle,
+                        ),
+                      ],
+                    ),
+                    Slider(
+                      value: height.toDouble(),
+                      max: 220,
+                      min: 120,
+                      activeColor: Colors.deepPurpleAccent,
+                      inactiveColor: Colors.grey,
+                      onChanged: (double newValue) {
+                        setState(() {
+                          height = newValue.round();
+                        });
+                      },
+                    )
+                  ],
+                ),
+              ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
