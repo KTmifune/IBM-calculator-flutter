@@ -9,7 +9,7 @@ class IBMCalculator extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'IBM Calculator',
-      theme: ThemeData(
+      theme: ThemeData.dark().copyWith(
         primaryColor: Color(0xFF191740),
         scaffoldBackgroundColor: Color(0xFF191740),
         accentColor: Colors.redAccent,
