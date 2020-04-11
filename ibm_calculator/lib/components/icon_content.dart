@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'constants.dart';
+import '../constants.dart';
 
 // 性別のアイコン設定
 class IconContent extends StatelessWidget {
