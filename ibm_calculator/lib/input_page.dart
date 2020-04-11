@@ -1,9 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:ibm_calculator/result_page.dart';
 import 'icon_content.dart';
 import 'reusable_card.dart';
 import 'constants.dart';
+import 'package:ibm_calculator/BottomButton.dart';
+import 'round_icon_button.dart';
 
 enum Gender { male, female }
 
@@ -126,7 +129,7 @@ class _InputPageState extends State<InputPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          'weight',
+                          '体重',
                           style: textStyle,
                         ),
                         Text(
@@ -199,36 +202,20 @@ class _InputPageState extends State<InputPage> {
                 ),
               ],
             ),
-            Container(
-              height: 80.0,
-              width: double.infinity,
-              color: bottomContainerColor,
-              margin: EdgeInsets.only(top: 10.0),
+            BottomButton(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ResultPage(),
+                  ),
+                );
+              },
+              buttonTitle: '計算する',
             ),
           ],
         ),
       ),
     );
-  }
-}
-
-class RoundIconButton extends StatelessWidget {
-  final IconData icon;
-  final Function onPressed;
-
-  RoundIconButton({@required this.icon, @required this.onPressed});
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-        elevation: 10.0,
-        constraints: BoxConstraints.tightFor(
-          height: 56.0,
-          width: 56.0,
-        ),
-        shape: CircleBorder(),
-        fillColor: Colors.grey,
-        child: Icon(icon, size: 20.0),
-        onPressed: onPressed);
   }
 }
